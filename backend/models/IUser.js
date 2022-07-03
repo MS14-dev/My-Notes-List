@@ -9,11 +9,9 @@ const iUserSchema = new Schema({
     },
     firstName:{
         type:String,
-        required:true,
     },
     lastName:{
         type:String,
-        required:true,
     },
     email:{
         type:String,
@@ -23,14 +21,14 @@ const iUserSchema = new Schema({
     },
     dateOfBirth:{
         type:Date,
-        required:true,
     },
     mobile:{
         type:Number,
-        required:true,
     },
     status:{
         type:Boolean,
+        //when the user newly enter, default value is "true"
+        default:true,
         required:true,
     },
     password:{
