@@ -9,9 +9,11 @@ var app = express();
 
 // sub-routes are applyied here......
 var adminRouter = require('./routes/adminRouter');
+var studentRouter = require('./routes/studentRouter');
 
 //admin sub-route connected to here
 app.use('/admin',adminRouter);
+app.use('/student',studentRouter);
 
 
 

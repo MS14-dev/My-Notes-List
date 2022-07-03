@@ -1,5 +1,6 @@
 // node libraries import
 const express = require('express');
+const jwt = require('jsonwebtoken')
 
 //admin router defined
 const adminRouter = express.Router();
