@@ -3,9 +3,21 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var cors = require('cors');
+var mongoose = require('mongoose')
 // var logger = require('morgan');
 
 var app = express();
+
+// mongoDB database connection establish....
+const databaseUrl = 'mongodb://localhost:27017/my_notes_list';
+
+const database = mongoose.connect(databaseUrl);
+database.then((db)=>{
+   console.log("Successfully Connected to the database")
+},(err)=>{
+   console.log(err);
+   throw err;
+})
 
 // sub-routes are applyied here......
 var adminRouter = require('./routes/adminRouter');
