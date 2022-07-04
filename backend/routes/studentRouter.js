@@ -1,6 +1,6 @@
-// node libraries import
 //.env configuration
 require('dotenv').config();
+// node libraries import
 const express = require('express');
 const jwt = require('jsonwebtoken')
 

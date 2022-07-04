@@ -1,0 +1,35 @@
+/* import google font  */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap');
+
+/* global style variables are defined */
+:root {
+    --majorYellow: #ffb703;
+    --majorBlue: #219ebc;
+    --mainFont: 'Merriweather', serif;
+    --subFont: 'Caveat', cursive;
+}
+
+.common-blue-btn{
+    background: var(--majorBlue);
+    margin-top: 5%;
+}
+.common-yellow-btn{
+    background: var(--majorYellow);
+    margin-top: 5%;
+}
+.common-blue-text{
+    color: var(--majorBlue);
+    font-family: var(--mainFont);
+    font-size: 300%;
+    text-align: center;
+}
+.common-yellow-text{
+    color:var(--majorYellow);
+    font-family: var(--subFont);
+    text-align: center;
+    font-size: 200%;
+}
+.common-input{
+    margin-top: 5%;
+}

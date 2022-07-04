@@ -34,7 +34,10 @@ app.use('/student',studentRouter);
 // app.set('view engine', 'jade');
 
 // cors policies implementation
-app.use(cors());
+app.use(cors({
+  methods:['GET','POST'],
+  credentials:true
+}));
 
 
 // app.use(logger('dev'));

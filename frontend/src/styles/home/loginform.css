@@ -1,0 +1,20 @@
+
+/* globally colors define */
+:root {
+    --majorYellow: #ffb703;
+    --majorBlue: #219ebc;
+  }
+
+.home-login-form-outer-div{
+    padding: 4%;
+    border: 2px solid black;
+    border-radius: 15px;
+    margin-top: 20%;
+}
+/* .home-login-form-input{
+    margin-top: 5%;
+} */
+/* .home-login-form-btn{
+    margin-top: 5%;
+    background: var(--majorYellow);
+} */
