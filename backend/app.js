@@ -23,9 +23,6 @@ database.then((db)=>{
 var adminRouter = require('./routes/adminRouter');
 var studentRouter = require('./routes/studentRouter');
 
-//admin sub-route connected to here
-app.use('/admin',adminRouter);
-app.use('/student',studentRouter);
 
 
 
@@ -35,10 +32,14 @@ app.use('/student',studentRouter);
 
 // cors policies implementation
 app.use(cors({
-  methods:['GET','POST'],
-  credentials:true
+  origin:'http://localhost:3000',
+  methods:['get','post'],
+  credentials:true,
 }));
 
+//admin sub-route connected to here
+app.use('/admin',adminRouter);
+app.use('/student',studentRouter);
 
 // app.use(logger('dev'));
 app.use(express.json());

@@ -19,3 +19,9 @@
     background: var(--majorBlue);
     margin-top: 5%;
 }
+.signin-signin-form-response-message{
+    text-align: center;
+    font-family: var(--subFont);
+    color: #e63946;
+    font-weight: bold;
+}

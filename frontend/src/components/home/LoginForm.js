@@ -12,9 +12,9 @@ export default function () {
     <div className='container-fluid'>
         <div className='row' > 
            <div className='col-md-3' ></div>
-           <div class="form-group col-md-6 home-login-form-outer-div">
-               <input type="email" class="form-control common-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
-               <input type="password" class="form-control common-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter password"/>
+           <div className="form-group col-md-6 home-login-form-outer-div">
+               <input type="email" className="form-control common-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
+               <input type="password" className="form-control common-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter password"/>
                <button className='common-yellow-btn btn'>login</button>
                <p>signin here</p>
            </div>
