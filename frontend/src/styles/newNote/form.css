@@ -9,9 +9,3 @@
     --mainFont: 'Merriweather', serif;
     --subFont: 'Caveat', cursive;
 }
-
-.userinfo-form-response-msg{
-    font-family: var(--subFont);
-    color: #e63946;
-    text-align: center;
-}

@@ -15,6 +15,7 @@ export default function Form() {
   let [mobile,setMobile] = useState('')
   let [dateOfBirth,setDateOfBirth] = useState('')
   let [password,setPassword] = useState('')
+  let [responseMessage,setResponseMessage] = useState('')
 
   //navigation hook
   let navigate = useNavigate()
@@ -36,6 +37,9 @@ export default function Form() {
             },{headers:{access_token:token}})
             if(data.response){
                 navigate('/');
+            }else{
+                //when failed to update data
+                setResponseMessage(data.message);
             }
         }
     }catch(err){
@@ -48,6 +52,7 @@ export default function Form() {
         <div className='row' >
             <div className='col-md-12' >
                 <p className='common-yellow-text' >Update your info</p>
+                <p className='userinfo-form-response-msg'>{responseMessage}</p>
                 <form onSubmit={onSubmitForm} >
                    <input
                     type="text" 

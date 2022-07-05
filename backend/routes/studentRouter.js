@@ -8,6 +8,7 @@ const {SHA256} = require('crypto-js')
 
 //import database models
 const IUser = require('../models/IUser')
+const Note = require('../models/Note');
 
 //student router defined
 const studentRouter = express.Router();
@@ -107,7 +108,8 @@ const userVerify=(req,res,next)=>{
         jwt.verify(token,KEY,(err,decode)=>{
             //if the token is modified
             if(err){
-                res.status(500).send({response:false,message:"Authentication Failed"});
+                console.log("TOKEN MODIFIED")
+                res.status(200).send({response:false,message:"Authentication Failed"});
             }else{
                 //get the logged email from the token
                 loggedEmail = decode.email
@@ -139,8 +141,97 @@ studentRouter.post('/info-update',userVerify,async(req,res)=>{
         }
     }catch(err){
         console.log(err)
+        res.status(200).send({response:false,message:"Somthing Went Wrong"});
         throw err;
-        res.status(500).send({response:false,message:"Somthing Went Wrong"});
+    }
+})
+
+//route founction for add new note......
+studentRouter.post('/add-new-note',userVerify, async (req,res)=>{
+    try{
+        let {title,description} = req.body;
+        //store the note in the database
+        let storedNote = await Note.create({title,description,email:loggedEmail});
+        console.log(storedNote);
+        res.status(200).send({response:true,message:"Successfully Added"});
+    }catch(err){
+        console.log(err);
+        res.status(200).send({response:false,message:"Somthing Went Wrong"});
+    }
+})
+
+//route for get all notes of the student.......
+studentRouter.get('/all-notes',userVerify,async (req,res)=>{
+    try{
+        //get all the notes regarding to the student
+        let allNotes = await Note.find({email:loggedEmail});
+        console.log("ALL NOTES",allNotes.length)
+        if(allNotes.length != 0){
+            //student already have some notes
+            res.status(200).send({response:true,message:"Success",notes:allNotes});
+        }else{
+            //student have no any previous notes
+            res.status(200).send({response:true,message:"Success",notes:allNotes});
+        }
+
+    }catch(err){
+        console.log(err)
+        res.status(200).send({response:false,message:"Something went wrong"})
+    }
+})
+
+//student route for get specific note details...
+studentRouter.get('/note/:id',userVerify,async(req,res)=>{
+    try{
+        //catch the note id came through the dynamic route value
+        let noteId = req.params.id;
+        //get note details according to the note id
+        let noteDetails = await Note.findOne({_id:noteId});
+        if(noteDetails){
+            res.status(200).send({response:true,message:"Success",noteDetails});
+        }else{
+            res.status(200).send({response:false,message:"Something went wrong"})
+        }
+    }catch(err){
+        console.log(err)
+        res.status(200).send({response:false,message:"Something went wrong"})
+    }
+})
+
+//student router for update note....
+studentRouter.post('/update-note',userVerify,async (req,res)=>{
+    try{
+        //get data via request
+        let {id,title,description} = req.body
+        let updatedNote = await Note.updateOne({_id:id},{$set:{title,description}});
+        if(updatedNote){
+            //successfully updated
+            res.status(200).send({response:true,message:"Successfully Updated"})
+        }else{
+            //update failed
+            res.status(200).send({response:false,message:"Update Failed"})
+        }
+    }catch(err){
+        console.log(err);
+        res.status(200).send({response:false,message:"Something Went wrong"})
+    }
+})
+
+//student route for delete a note by it's id.....
+studentRouter.get('/delete-note/:id',userVerify,async (req,res)=>{
+    try{
+        //catch note id
+        let noteId = req.params.id
+        let deletedNote = await Note.deleteOne({_id:noteId});
+        if(deletedNote){
+            //successfully deleted
+            res.status(200).send({response:true,message:"Successfully Deleted"})
+        }else{
+            res.status(200).send({response:false,message:"Couldn't Delete"})
+        }
+    }catch(err){
+        console.log(err);
+        res.status(200).send({response:false,message:"Somthing Went Wrong"})
     }
 })
 

@@ -8,6 +8,10 @@ const noteSchema = new Schema({
     },
     description:{
         type:String,
+    },
+    email:{
+        type:String,
+        required:true
     }
 })
 

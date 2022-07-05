@@ -9,9 +9,10 @@
     --mainFont: 'Merriweather', serif;
     --subFont: 'Caveat', cursive;
 }
-
-.userinfo-form-response-msg{
-    font-family: var(--subFont);
-    color: #e63946;
-    text-align: center;
+.student-note-outer-div{
+    background: var(--majorBlue);
+    padding: 2%;
+    border-radius: 15px;
+    /* cursor: pointer; */
+    margin-top: 2%;
 }

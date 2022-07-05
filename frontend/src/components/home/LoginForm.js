@@ -34,7 +34,7 @@ const onFormSubmit=async(e)=>{
         if(data.firstTime){
           navigate('/student-info');
         }else{
-          navigate('/signin')
+          navigate('/my-account')
         }
       }
     }catch(err){
