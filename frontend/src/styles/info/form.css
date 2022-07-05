@@ -1,0 +1,12 @@
+/* import google font  */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap');
+
+/* global style variables are defined */
+:root {
+    --majorYellow: #ffb703;
+    --majorBlue: #219ebc;
+    --mainFont: 'Merriweather', serif;
+    --subFont: 'Caveat', cursive;
+}
+
