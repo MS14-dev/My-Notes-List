@@ -97,5 +97,14 @@ adminRouter.get('/all-student',adminVerification,async (req,res)=>{
     }
 })
 
+adminRouter.get('/user-details',adminVerification,async (req,res)=>{
+    try{
+        
+    }catch(err){
+        console.log(err);
+        res.status(200).send({response:false,message:"Something Went Wrong"})
+    }
+})
+
 //export the admin router
 module.exports  = adminRouter;

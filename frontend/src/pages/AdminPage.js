@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 //import page components
 import StudentList from '../components/admin/StudentList'
+import StudentDetail from '../components/admin/StudentDetail';
 
 //import common style
 import '../styles/common.css'
@@ -15,6 +16,9 @@ export default function AdminPage() {
 
     //set the initial state of students details
     let [studenstList,setStudentsList] = useState([]);
+
+    //initial state of paricular user details
+    let [studentInfo,setStudentInfo] = useState(false);
     
     //check the validation and data when page load
     useEffect(()=>{
@@ -52,9 +56,12 @@ export default function AdminPage() {
                 <p className='common-blue-text' >Admin Dashboard</p>
             </div>
             <div className='col-md-6' >
-                <StudentList studentsList={studenstList} />
+                {/* send setStudentInfo prop to set info of a student to state */}
+                <StudentList studentsList={studenstList} setStudentInfo={setStudentInfo}/>
             </div>
-            <div className='col-md-6' ></div>
+            <div className='col-md-6' >
+                {studentInfo ? <StudentDetail studentInfo={studentInfo}/> : <p>Please select student</p>}
+            </div>
         </div>
     </div>
   )

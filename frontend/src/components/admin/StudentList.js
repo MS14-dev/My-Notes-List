@@ -4,7 +4,7 @@ import React from 'react'
 import '../../styles/common.css'
 import '../../styles/admin/studentList.css'
 
-export default function StudentList({studentsList}) {
+export default function StudentList({studentsList,setStudentInfo}) {
   return (
     <div className='container-fluid' >
         <div className='row' >
@@ -15,7 +15,12 @@ export default function StudentList({studentsList}) {
                 {
                     studentsList.map((student)=>{
                         return(
-                            <div key={student._id} className='admin-student-list-list-item-outer'>
+                            <div 
+                            //   change the student info state in the higher order componet
+                              onClick={()=>{setStudentInfo(student)}} 
+                              key={student._id} 
+                              className='admin-student-list-list-item-outer'
+                              >
                                 <p>{`${student.firstName} ${student.lastName}`}</p>
                             </div>
                         )

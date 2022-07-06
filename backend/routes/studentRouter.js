@@ -50,9 +50,15 @@ studentRouter.post('/signin', async (req,res)=>{
 
             //get last user's id
             let lastUser = await IUser.find({},{id:1,_id:-1}).sort({_id:-1}).limit(1);
+            console.log("LAST_USER",lastUser)
             //create new user's id
             let newUserId;
-            lastUser.length == 0 ?  newUserId = 0 : newUserId = lastUser[0].id + 1 ;
+            if(lastUser.length == 0){
+                newUserId = 0 
+            }else {
+                newUserId = (lastUser[0].id + 1)
+            }
+            console.log("NEW_UID_TYPE",newUserId)
             //create a new student account
             let newStudent = await IUser.create({id:newUserId,email:userEmail,password:hashedRandomPassword,accountType:'student'});
             //mail sending options set
@@ -60,7 +66,8 @@ studentRouter.post('/signin', async (req,res)=>{
                 from:EMAIL,
                 to:userEmail,
                 subject:"Hi welcome to My-Notes-List",
-                text:`Tempory Password: ${randomPassword}`
+                text:`Tempory Password: ${randomPassword}
+                    Login: http://localhost:3000/`
             }
             transporter.sendMail(mailOptions,(err,success)=>{
                 if(err){
