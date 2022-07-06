@@ -49,8 +49,9 @@ export default function StudentPage() {
   return (
     <div  className='container-fluid'>
         <div className='row' >
-            <div className='col-md-6' >
+            <div className='col-md-6 student-notes-list-outer' >
                 <h1 className='common-yellow-text' >My notes</h1>
+                <div className='student-notes-list-inner'>
                 {
                     notes.length != 0 ?
                     notes.map((note)=>{
@@ -61,8 +62,9 @@ export default function StudentPage() {
                     :
                     <h6 className='common-blue-text' >No notes yet</h6>
                 }
+                </div>
             </div>
-            <div className='col-md-6'>
+            <div className='col-md-6 student-btns-outer'>
                 <div className='row'>
                     <div>
                         <Link to='/new-note' ><button className='common-blue-btn btn'>New Note</button></Link>

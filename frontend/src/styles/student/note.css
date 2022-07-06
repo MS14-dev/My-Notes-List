@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap');
 
 /* global style variables are defined */
+/* styles for whole student page included */
 :root {
     --majorYellow: #ffb703;
     --majorBlue: #219ebc;
@@ -15,4 +16,15 @@
     border-radius: 15px;
     /* cursor: pointer; */
     margin-top: 2%;
+}
+
+.student-notes-list-outer{
+    margin-top: 5%;
+}
+.student-notes-list-inner{
+    height: 70vh;
+    overflow: scroll;
+}
+.student-btns-outer{
+    margin-top: 5%;
 }

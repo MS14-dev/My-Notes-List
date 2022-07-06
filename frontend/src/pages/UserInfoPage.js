@@ -1,8 +1,11 @@
 import React,{useEffect} from 'react';
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 //import components of the page
 import Form from '../components/info/Form'
+
+//import common styles
+import '../styles/common.css'
 
 export default function UserInfoPage() {
 
@@ -20,7 +23,9 @@ export default function UserInfoPage() {
   return (
     <div className='container'>
         <div className='row' >
-            <div className='col-md-3' ></div>
+            <div className='col-md-3' >
+              <Link to='/my-account' ><button className='common-blue-btn btn' >My account</button></Link>
+            </div>
             <div className='col-md-6' >
                 <Form/>
             </div>

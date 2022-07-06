@@ -60,7 +60,10 @@ export default function AdminPage() {
                 <StudentList studentsList={studenstList} setStudentInfo={setStudentInfo}/>
             </div>
             <div className='col-md-6' >
-                {studentInfo ? <StudentDetail studentInfo={studentInfo}/> : <p>Please select student</p>}
+                {studentInfo ? 
+                   <StudentDetail studentInfo={studentInfo}/> : 
+                   <p className='common-yellow-text' >Please select a student</p>
+                }
             </div>
         </div>
     </div>

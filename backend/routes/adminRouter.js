@@ -83,7 +83,6 @@ adminRouter.get('/all-student',adminVerification,async (req,res)=>{
     try{
         //get all the students details **without password
         let studentsList = await IUser.find({accountType:'student'});
-        console.log('ALL_STUDENTS',studentsList)
         if(studentsList.length == 0){
             //no students register yet
             res.status(200).send({response:true,message:'Success',studentsList})
@@ -97,9 +96,28 @@ adminRouter.get('/all-student',adminVerification,async (req,res)=>{
     }
 })
 
-adminRouter.get('/user-details',adminVerification,async (req,res)=>{
+//route for get user details according to admin search
+adminRouter.post('/user-details',adminVerification,async (req,res)=>{
     try{
-        
+        //capture the search text comes from frontend
+        let {searchText} = req.body
+        console.log(searchText)
+        //initiate the search result array
+        let searchResult = [];
+
+        //get first name related results
+        let firstNameSet = await IUser.find({accountType:'student',firstName:searchText});
+        //get last name related results
+        let lastNameSet = await IUser.find({accountType:'student',lastName:searchText});
+        //get email related results
+        let emailSet = await IUser.find({accountType:'student',email:searchText});
+        //get id related results
+        let idSet = [];
+        if(typeof(Number(idSet)) == 'number'){
+             idSet = await IUser.find({accountType:'student',id:Number(searchText)});
+        }
+        searchResult = [...firstNameSet,...lastNameSet,...emailSet,...idSet]
+        console.log('SEARCH_RESULT',searchResult)
     }catch(err){
         console.log(err);
         res.status(200).send({response:false,message:"Something Went Wrong"})

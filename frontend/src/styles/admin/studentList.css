@@ -22,3 +22,7 @@
     color: var(--majorBlue);
     cursor: pointer;
 }
+.admin-student-list-inner{
+    height: 50vh;
+    overflow: scroll;
+}
