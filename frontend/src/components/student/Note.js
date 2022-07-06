@@ -29,6 +29,8 @@ export default function Note({noteId,noteTitle}) {
             if(data.response){
                 //when deletion success
                 alert(data.message)
+                //refresh the page..
+                window.location.reload(false)
                 navigate('/my-account');
             }else{
                 alert(data.message);

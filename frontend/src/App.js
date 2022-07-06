@@ -8,6 +8,8 @@ import UserInfoPage from "./pages/UserInfoPage";
 import NewNotePage from "./pages/NewNotePage";
 import StudentPage from "./pages/StudentPage";
 import NotePage from "./pages/NotePage";
+import AdminLoginPage from "./pages/AdminLoginPage";
+import AdminPage from "./pages/AdminPage";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path="/my-account" element={<StudentPage/>} />
         {/* this route is dynamic because content is dynamic according to the note */}
         <Route path="/note/:id" element={<NotePage/>} />
+        <Route path="/admin/login" element={<AdminLoginPage/>} />
+        <Route path="/admin/dashboard" element={<AdminPage/>} />
       </Routes>
     </BrowserRouter>
   );

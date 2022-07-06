@@ -1,0 +1,24 @@
+/* import google font  */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap');
+
+/* global style variables are defined */
+:root {
+    --majorYellow: #ffb703;
+    --majorBlue: #219ebc;
+    --mainFont: 'Merriweather', serif;
+    --subFont: 'Caveat', cursive;
+}
+.admin-student-list-list-title{
+    background: var(--majorBlue);
+    border-radius: 15px;
+}
+.admin-student-list-list-item-outer{
+    background: var(--majorYellow);
+    width: fit-content;
+    padding: 1%;
+    margin-top: 1%;
+    border-radius: 15px;
+    color: var(--majorBlue);
+    cursor: pointer;
+}

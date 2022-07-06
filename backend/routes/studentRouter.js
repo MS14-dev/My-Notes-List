@@ -5,6 +5,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const {v1:uuid} = require('uuid');
 const {SHA256} = require('crypto-js')
+const nodemailer = require('nodemailer')
 
 //import database models
 const IUser = require('../models/IUser')
@@ -17,6 +18,22 @@ studentRouter.use(express.json());
 
 // the key for JWT uses
 const KEY = process.env.TOKEN_KEY;
+//organization's email to send email
+const EMAIL = process.env.SITE_EMAIL
+const EMAIL_PASSWORD = process.env.SITE_EMAIL_PASSWORD
+
+//email function setting......
+let transporter = nodemailer.createTransport({
+    service:"",
+    auth:{
+        user:EMAIL,
+        pass:EMAIL_PASSWORD
+    },
+    tls:{
+        rejectUnauthorized:false
+    }
+})
+
 
 //sub router for signin users and validate their email.......
 studentRouter.post('/signin', async (req,res)=>{
@@ -38,7 +55,22 @@ studentRouter.post('/signin', async (req,res)=>{
             lastUser.length == 0 ?  newUserId = 0 : newUserId = lastUser[0].id + 1 ;
             //create a new student account
             let newStudent = await IUser.create({id:newUserId,email:userEmail,password:hashedRandomPassword,accountType:'student'});
-            res.status(200).send({response:true,message:randomPassword})
+            //mail sending options set
+            let mailOptions = {
+                from:EMAIL,
+                to:userEmail,
+                subject:"Hi welcome to My-Notes-List",
+                text:`Tempory Password: ${randomPassword}`
+            }
+            transporter.sendMail(mailOptions,(err,success)=>{
+                if(err){
+                    console.log("err")
+                    res.status(200).send({response:true,message:"Oops something went wrong:("})
+                }else{
+                    console.log("Success")
+                    res.status(200).send({response:true,message:"Pleace check your email"})
+                }
+            })
         }else{
             //when the user is already exist with particular email
             res.status(200).send({response:false,message:"The email is already taken :("})
