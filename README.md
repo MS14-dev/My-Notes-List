@@ -21,17 +21,18 @@ Open frontend file and backend file in two seperate command promts\
 run:- npm install commond in both CMDs for install dependencies\
 create .env file and .gitignore file parallel to package.json file in backend file
 
-## inside .gitignore file add:
+## inside .gitignore file in backend folder add:
 /node_modules\
 .env
 
-## inside .env file:
+## inside .env file in the backend folder:
 TOKEN_KEY = add your key for encode token data\
 SITE_EMAIL = add the email for send tempory passwords to users\
 SITE_EMAIL_PASSWORD = password of the email use in above process\
 ADMIN_EMAIL = admins email for login to the system\
 ADMIN_PASSWORD = admins password for login to the system\
 
+### Open CMD in the backend folder
 run:- npm run admin_config to add admin to the database directly
 
 ## For admin login:
