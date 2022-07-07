@@ -35,5 +35,9 @@ ADMIN_PASSWORD = admins password for login to the system\
 ### Open CMD in the backend folder
 run:- npm run admin_config to add admin to the database directly
 
+### Start the backend and frontend
+Open frontend file and backend file in two seperate command promts\
+run:- npm start in bothe CMDs
+
 ## For admin login:
 Use : http://localhost:3000/admin/login
