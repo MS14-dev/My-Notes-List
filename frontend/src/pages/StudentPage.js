@@ -27,6 +27,7 @@ export default function StudentPage() {
                     }
                 })
                 //check the authentication of the user
+                console.log("STUDENT_PAGE",data.response)
                 if(data.response){
                     //set received notes to the notes state
                     setNotes(data.notes);

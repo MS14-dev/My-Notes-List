@@ -113,11 +113,12 @@ adminRouter.post('/user-details',adminVerification,async (req,res)=>{
         let emailSet = await IUser.find({accountType:'student',email:searchText});
         //get id related results
         let idSet = [];
-        if(typeof(Number(idSet)) == 'number'){
+        // need to convert string to the number
+        if(!isNaN(parseInt(searchText))){
              idSet = await IUser.find({accountType:'student',id:Number(searchText)});
         }
         searchResult = [...firstNameSet,...lastNameSet,...emailSet,...idSet]
-        console.log('SEARCH_RESULT',searchResult)
+        res.status(200).send({response:true,searchResult});
     }catch(err){
         console.log(err);
         res.status(200).send({response:false,message:"Something Went Wrong"})

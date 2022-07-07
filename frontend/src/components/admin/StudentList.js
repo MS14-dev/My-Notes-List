@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { useLocation } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
 //import common style
@@ -10,6 +10,9 @@ export default function StudentList({studentsList,setStudentInfo}) {
 
     //set the initial state of search text
     let [searchText,setSearchText] = useState('')
+
+    //initiate the navigate hook
+    let navigate = useNavigate();
 
     const onSearch=async(e)=>{
         try{
@@ -23,6 +26,10 @@ export default function StudentList({studentsList,setStudentInfo}) {
                         admin_access_token:token
                     }
                 })
+                if(data.response){
+                    //move to the search page with search results
+                    navigate('/admin/search',{state:{searchResult:data.searchResult}})
+                }
             }
         }catch(err){
             throw err

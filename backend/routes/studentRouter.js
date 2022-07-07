@@ -150,9 +150,14 @@ const userVerify=(req,res,next)=>{
                 console.log("TOKEN MODIFIED")
                 res.status(200).send({response:false,message:"Authentication Failed"});
             }else{
-                //get the logged email from the token
-                loggedEmail = decode.email
-                next();
+                //check account type
+                if(decode.accountType == 'student'){
+                    //get the logged email from the token
+                    loggedEmail = decode.email
+                    next();
+                }else{
+                    res.status(200).send({response:false,message:"Authentication Failed"});
+                }
             }
         })
     }
